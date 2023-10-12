@@ -64,8 +64,6 @@ combo_t key_combos[] = {
 #undef C3A
 #undef C4A
 
-// Can be toggled using TG_MAC key.
-static bool _mac = true;
 #define C2(k1, k2, kr) 
 #define C3(k1, k2, k3, kr)
 #define C2A(k1, k2, act)  case C_##k1##_##k2: act break;
