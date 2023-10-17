@@ -22,23 +22,14 @@
 
 #define COMBO_ALLOW_ACTION_KEYS
 #define COMBO_TERM 36
-#define COMBO_MUST_TAP_PER_COMBO
+// #define COMBO_MUST_TAP_PER_COMBO
 #define COMBO_TERM_PER_COMBO
-// All combos are specified from the base layer, saves space
-#define COMBO_ONLY_FROM_LAYER 0
 
 #ifdef TAPPING_TERM
 #undef TAPPING_TERM
 #endif
 
-#define TAPPING_TERM 150
+#define TAPPING_TERM 170
 #define TAPPING_TERM_PER_KEY
 
-// Prevent normal rollover on alphas from accidentally triggering mods.
-#define IGNORE_MOD_TAP_INTERRUPT
-// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
-#define TAPPING_FORCE_HOLD
-// Apply the modifier on keys that are tapped during a short hold of a modtap
-#define PERMISSIVE_HOLD
-// Immediately turn on layer if key is pressed quickly
-#define HOLD_ON_OTHER_KEY_PRESS
+#define TAPPING_TOGGLE 3

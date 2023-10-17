@@ -52,21 +52,17 @@ typedef union {
     };
 } cocot_config_t;
 
-
-
 extern cocot_config_t cocot_config;
 
 enum cocot_keycodes {
-
-    COCOT_SAFE_RANGE = SAFE_RANGE,
-    CPI_SW,
+    CPI_SW = SAFE_RANGE,
     SCRL_SW,
     ROT_R15,
     ROT_L15,
     SCRL_MO,
     SCRL_TO,
     SCRL_IN,
-
+    COCOT_SAFE_RANGE,
 };
 
 // #define CPI_SW USER00
