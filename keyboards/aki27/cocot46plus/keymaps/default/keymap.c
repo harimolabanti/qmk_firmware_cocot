@@ -22,12 +22,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "combos.h"
 #include "keymap_steno.h"
 #include "oneshot.h"
-#include "swapper.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT(
 
-        KC_NO, KC_Q, KC_W, KC_F, KC_P, KC_B, KC_J, KC_L, KC_U, KC_Y, KC_DQUO, KC_NO,
+        KC_NO, KC_Q, KC_W, KC_F, KC_P, KC_B, KC_J, KC_L, KC_U, KC_Y, KC_SCLN, KC_NO,
 
         KC_NO, KC_A, KC_R, KC_S, KC_T, KC_G, KC_M, KC_N, KC_E, KC_I, KC_O, KC_NO,
 
@@ -40,11 +39,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ),
     [_SYM] = LAYOUT(
 
-        _______, KC_CIRC, KC_TILD, KC_HASH, KC_DLR, _______, KC_MINS, KC_7, KC_8, KC_9, KC_DOT, _______,
+        _______, _______, KC__AMPR, KC_CIRC, KC_TILD, _______, KC_MINS, KC_7, KC_8, KC_9, KC_DOT, _______,
 
-        _______, KC_PERC, KC__AMPR, KC_AT, KC__EXLM, _______, KC_PLUS, KC_1, KC_2, KC_3, KC_0, _______,
+        _______, KC_PERC,  KC_DLR, KC_HASH, KC_CAPS, _______, KC_PLUS, KC_1, KC_2, KC_3, KC_0, _______,
 
-        _______, KC_BSLS, KC__PIPE, KC_CAPS, KC_APP, _______, KC_ASTR, KC_4, KC_5, KC_6, KC_SLSH, _______,
+        _______, _______, KC__PIPE, KC_BSLS, KC_APP, _______, KC_ASTR, KC_4, KC_5, KC_6, KC_SLSH, _______,
 
         _______, _______, _______, _______, KC_MS_BTN4, KC_MS_BTN5, _______, CANCEL, _______, _______,
 
@@ -79,6 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ),
 };
 
+#ifdef COMBO_ENABLE
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     switch (index) {
         // Vertical combos, very relaxed
@@ -101,6 +101,7 @@ uint16_t get_combo_term(uint16_t index, combo_t *combo) {
             return COMBO_TERM;
     }
 }
+#endif
 
 keyevent_t encoder1_ccw = {.key = (keypos_t){.row = 4, .col = 2}, .pressed = false};
 
@@ -179,15 +180,20 @@ void triple_tap(uint16_t keycode) {
     tap_code16(keycode);
 }
 
-bool          sw_win_active = false;
+void double_tap_when_held(uint16_t keycode, keyrecord_t *record) {
+  if(!record->tap.count) {
+    double_tap_space(keycode);
+  } else {
+    tap_code16(keycode);
+  }
+}
+
 oneshot_state os_shft_state = os_up_unqueued;
 oneshot_state os_ctrl_state = os_up_unqueued;
 oneshot_state os_alt_state  = os_up_unqueued;
 oneshot_state os_cmd_state  = os_up_unqueued;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    update_swapper(&sw_win_active, _mac ? KC_LGUI : KC_LALT, KC_TAB, KC_SW_WIN, keycode, record);
-
     update_oneshot(&os_shft_state, KC_LSFT, OS_SHFT, keycode, record);
     update_oneshot(&os_ctrl_state, KC_LCTL, OS_CTRL, keycode, record);
     update_oneshot(&os_alt_state, KC_LALT, OS_ALT, keycode, record);
@@ -200,18 +206,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
         case KC__EQL:
-            if (!record->tap.count && record->event.pressed) {
-                double_tap_space(keycode);
+            if (record->event.pressed) {
+                double_tap_when_held(keycode, record);
                 return false;
             }
             break;
         case KC__AMPR:
             if (record->event.pressed) {
-                if(!record->tap.count) {
-                  double_tap_space(KC_AMPR);
-                } else {
-                  tap_code16(KC_AMPR);
-                }
+                double_tap_when_held(KC_AMPR, record);
+                return false;
+            }
+            break;
+        case KC__PIPE:
+            if (record->event.pressed) {
+                double_tap_when_held(KC_PIPE, record);
                 return false;
             }
             break;
@@ -221,16 +229,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                   send_string(" != ");
                 } else {
                   tap_code16(KC_EXLM);
-                }
-                return false;
-            }
-            break;
-        case KC__PIPE:
-            if (record->event.pressed) {
-                if(!record->tap.count) {
-                  double_tap_space(KC_PIPE);
-                } else {
-                  tap_code16(KC_AMPR);
                 }
                 return false;
             }
@@ -265,11 +263,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             break;
-
+        case KC__COLN:
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_COLN);
+                return false;
+            }
+            break;
+        case KC__DQUO:
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_DQUO);
+                return false;
+            }
+            break;
     }
 
     return true;
-}
+} 
 
 #ifdef RGBLIGHT_ENABLE
 layer_state_t layer_state_set_user(layer_state_t state) {

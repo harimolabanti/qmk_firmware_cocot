@@ -17,8 +17,6 @@ enum custom_keycodes {
     OS_ALT,
     OS_CMD,
 
-    KC_SW_WIN,
-
     DEL_WORD,
     BSPC_WORD,
     SAVE_FILE,
@@ -53,6 +51,8 @@ enum layer_number {
 #define KC__TAB CTL_T(KC_TAB)
 #define KC__ESC ALT_T(KC_ESC)
 #define KC__UNDS GUI_T(KC_UNDS)
+#define KC__DQUO CTL_T(KC_DQUO)
+#define KC__COLN ALT_T(KC_COLN)
 #define KC_SAVE_FILE GUI_T(SAVE_FILE)
 #define KC_DEL_WORD LCA_T(DEL_WORD)
 #define KC_BSPC_WORD LCA_T(BSPC_WORD)
