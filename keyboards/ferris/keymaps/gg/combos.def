@@ -1,0 +1,124 @@
+
+C2(S, T, _TAB)
+C2(R, S, _ESC)
+C2(S, C, DEL)
+C2(N, H, ENT)
+C2(P, B, ENT)
+
+C2(N, E, _DQUO)
+C2(E, I, _COLN)
+C2(A, UNDO_ACTION, Z)
+C2(R, X, AT)
+C2(F, S, _GRV)
+C2(T, P, _EQL)
+C2(R, T, SAVE_FILE)
+C2(T, D, QUOT)
+C2(H, DOT, MINS)
+C2(N, I, _UNDS)
+C2(DOT, SLSH, QUES)
+C2(W, R, _EXLM)
+
+// Mouse shortcuts
+C2(J, N, BTN4)
+C2(T, B, BTN5)
+C2(J, L, BTN5)
+C2(K, H, BTN4)
+
+// Brackets.
+C2(X, S, LBRC)
+C2(S, D, RBRC)
+C2(X, C, LCBR)
+C2(C, D, RCBR)
+C2(H, COMM, LPRN)
+C2(COMM, DOT, RPRN)
+
+// Open chrome tab manager
+C2A(DOT, I, PMS(SS_LSFT(SS_LGUI("a")), SS_LSFT(SS_LCTL("a"))))
+C2(X, D, NO)
+
+C2(A, R, NO)
+C2(Q, W, NO)
+C2(T, G, NO)
+C2(G, B, NO)                
+C2(G, V, NO)
+C2(E, H, NO)
+C2(E, DOT, NO)
+C2(O, SLSH, NO)
+C2(SCLN, O, NO)
+C2(Y, L, NO)
+C2(A, Q, NO)
+C2(D, V, NO)
+
+// Number combo with space for one off cases.
+C2(SFT_BSPC, H, 4)
+C2(SFT_BSPC, COMM, 5)
+C2(SFT_BSPC, DOT, 6)
+C2(SFT_BSPC, N, 1)
+C2(SFT_BSPC, E, 2) 
+C2(SFT_BSPC, I, 3)
+C2(SFT_BSPC, O, 0)
+C2(SFT_BSPC, L, 7)
+C2(SFT_BSPC, U, 8)
+C2(SFT_BSPC, Y, 9)
+C2(SFT_BSPC, M, PLUS)
+C2(SFT_BSPC, J, MINS)
+C2(SFT_BSPC, K, ASTR)
+
+C2(SFT_SPC, W, _AMPR)
+C2(SFT_SPC, F, CIRC)
+C2(SFT_SPC, P, TILD)
+C2(SFT_SPC, A, PERC)
+C2(SFT_SPC, R, DLR)
+C2(SFT_SPC, S, HASH)
+C2(SFT_SPC, T, CAPS)
+C2(SFT_SPC, D, APP)
+C2(SFT_SPC, C, BSLS)
+C2(SFT_SPC, X, _PIPE)
+
+// vim save
+C3A(Q, W, F, PS("\e:wq\n"))
+// copy, paste, cut
+C2A(W, F, PMS(SS_LGUI("c"), SS_LCTL("c")))
+C2A(F, P, PMS(SS_LGUI("v"), SS_LCTL("v")))
+C2A(W, P, PMS(SS_LGUI("x"), SS_LCTL("x")))
+
+// Find
+C2A(R, F, PMS(SS_LGUI("f"), SS_LCTL("f")))
+C2A(F, T, PMS(SS_LSFT(SS_LGUI("f")), SS_LSFT(SS_LCTL("f"))))
+
+// Run IDEA 
+C3A(S, T, G,  PS(SS_DOWN(X_LSFT)SS_TAP(X_F10)SS_UP(X_LSFT)))
+
+// Navigation
+C2(U, E, UP)
+C2(L, N, LEFT)
+C2(Y, I, RIGHT)
+C2(E, COMM, DOWN)
+C2(J, M, PGUP)
+C2(M, K, PGDN)
+C2(N, M, HOME)
+C2(I, O, END)
+
+// Move up and down in 5 increments.
+C2A(N, U, PS(SS_TAP(X_UP)SS_TAP(X_UP)SS_TAP(X_UP)SS_TAP(X_UP)SS_TAP(X_UP)))
+C2A(U, I, PS(SS_TAP(X_DOWN)SS_TAP(X_DOWN)SS_TAP(X_DOWN)SS_TAP(X_DOWN)SS_TAP(X_DOWN)))
+
+// New line above and below.
+C2A(L, M, PS(SS_TAP(X_HOME)SS_TAP(X_ENT)SS_TAP(X_UP)))
+C2A(N, K, PS(SS_TAP(X_END)SS_TAP(X_ENT)))
+
+// Select current line and move up.
+C3A(L, U, Y, PS(SS_TAP(X_END)SS_DOWN(X_LSFT)SS_TAP(X_UP)SS_TAP(X_END)SS_UP(X_LSFT)))
+
+// Duplicate current line
+C3A(W, F, P, PMS(SS_TAP(X_END)SS_DOWN(X_LSFT)SS_TAP(X_UP)SS_TAP(X_END)SS_UP(X_LSFT)SS_LGUI("c")SS_DELAY(10)SS_LGUI("v")SS_DELAY(10)SS_LGUI("v"), SS_TAP(X_END)SS_DOWN(X_LSFT)SS_TAP(X_UP)SS_TAP(X_END)SS_UP(X_LSFT)SS_LCTL("c")SS_DELAY(10)SS_LCTL("v")SS_DELAY(10)SS_LCTL("v")))
+// Delete current line
+C3A(H, COMM, DOT, PS(SS_TAP(X_END)SS_DOWN(X_LSFT)SS_TAP(X_HOME)SS_UP(X_LSFT)SS_TAP(X_DEL)))
+
+// move by words left and right
+C2A(L, U, PNPMS(SS_DOWN(X_LALT)SS_DOWN(X_LEFT), SS_UP(X_LALT)SS_UP(X_LEFT), SS_DOWN(X_LCTL)SS_DOWN(X_LEFT), SS_UP(X_LCTL)SS_UP(X_LEFT)))
+C2A(U, Y, PNPMS(SS_DOWN(X_LALT)SS_DOWN(X_RIGHT), SS_UP(X_LALT)SS_UP(X_RIGHT), SS_DOWN(X_LCTL)SS_DOWN(X_RIGHT), SS_UP(X_LCTL)SS_UP(X_RIGHT)))
+
+// delete words right and left
+C3(R, S, T, DEL_WORD)
+C3(N, E, I, BSPC_WORD)
