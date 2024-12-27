@@ -7,8 +7,7 @@ C2(P, B, ENT)
 
 C2(N, E, _DQUO)
 C2(E, I, _COLN)
-C2(A, UNDO_ACTION, Z)
-C2(R, X, AT)
+C2(T, G, AT)
 C2(F, S, _GRV)
 C2(T, P, _EQL)
 C2(R, T, SAVE_FILE)
@@ -34,12 +33,13 @@ C2(COMM, DOT, RPRN)
 
 // Open chrome tab manager
 C2A(DOT, I, PMS(SS_LSFT(SS_LGUI("a")), SS_LSFT(SS_LCTL("a"))))
+// undo
+C2A(R, X, PMS(SS_LGUI("z"), SS_LCTL("z")))
 C2(X, D, NO)
 
 C2(A, R, NO)
 C2(Q, W, NO)
-C2(T, G, NO)
-C2(G, B, NO)                
+C2(G, B, NO)
 C2(G, V, NO)
 C2(E, H, NO)
 C2(E, DOT, NO)
@@ -54,7 +54,7 @@ C2(SFT_BSPC, H, 4)
 C2(SFT_BSPC, COMM, 5)
 C2(SFT_BSPC, DOT, 6)
 C2(SFT_BSPC, N, 1)
-C2(SFT_BSPC, E, 2) 
+C2(SFT_BSPC, E, 2)
 C2(SFT_BSPC, I, 3)
 C2(SFT_BSPC, O, 0)
 C2(SFT_BSPC, L, 7)
@@ -86,7 +86,7 @@ C2A(W, P, PMS(SS_LGUI("x"), SS_LCTL("x")))
 C2A(R, F, PMS(SS_LGUI("f"), SS_LCTL("f")))
 C2A(F, T, PMS(SS_LSFT(SS_LGUI("f")), SS_LSFT(SS_LCTL("f"))))
 
-// Run IDEA 
+// Run IDEA
 C3A(S, T, G,  PS(SS_DOWN(X_LSFT)SS_TAP(X_F10)SS_UP(X_LSFT)))
 
 // Navigation

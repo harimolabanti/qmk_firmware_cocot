@@ -1,8 +1,8 @@
-VIA_ENABLE = no
+VIA_ENABLE = yes
 COMBO_ENABLE = yes
-STENO_ENABLE = yes
+# STENO_ENABLE = yes
 
-STENO_PROTOCOL = geminipr
+# STENO_PROTOCOL = geminipr
 VIRSTER_ENABLE = yes
 
 TAP_DANCE_ENABLE = no

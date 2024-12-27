@@ -8,7 +8,7 @@
 static bool _mac = false;
 
 enum custom_keycodes {
-    TG_MAC = COCOT_SAFE_RANGE,
+    TG_MAC = SAFE_RANGE,
     CANCEL,
 
     // Custom oneshot mod implementation with no timers.
@@ -20,19 +20,6 @@ enum custom_keycodes {
     DEL_WORD,
     BSPC_WORD,
     SAVE_FILE,
-
-    // Vim
-    SAVE_VIM,
-    VIM_VS,
-    VIM_SP,
-    CLOSE_WIN,
-
-    // Smart caps lock and layers that turn off on certain keys
-    CAPSWORD,
-    NUMWORD,
-
-    // Instant leader key
-    LEADER,
 };
 
 enum layer_number {

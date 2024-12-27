@@ -14,7 +14,6 @@ enum custom_keycodes {
     DEL_WORD,
     BSPC_WORD,
     SAVE_FILE,
-    KC_UNDO_ACTION,
 };
 
 enum layer_number {

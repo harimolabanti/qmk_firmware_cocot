@@ -3,11 +3,11 @@ C2(S, T, _TAB)
 C2(R, S, _ESC)
 C2(S, C, DEL)
 C2(N, H, ENT)
+C2(P, B, ENT)
 
 C2(N, E, _DQUO)
 C2(E, I, _COLN)
-
-C2(R, X, AT)
+C2(T, G, AT)
 C2(F, S, _GRV)
 C2(T, P, _EQL)
 C2(R, T, SAVE_FILE)
@@ -33,11 +33,12 @@ C2(COMM, DOT, RPRN)
 
 // Open chrome tab manager
 C2A(DOT, I, PMS(SS_LSFT(SS_LGUI("a")), SS_LSFT(SS_LCTL("a"))))
-C2(X, D, NO)
+// undo
+C2A(R, X, PMS(SS_LGUI("z"), SS_LCTL("z")))
+C2A(A, R, PMS(SS_LGUI("a"), SS_LCTL("a")))
 
+C2(X, D, NO)
 C2(Q, W, NO)
-C2(P, B, NO)
-C2(T, G, NO)
 C2(G, B, NO)
 C2(G, V, NO)
 C2(E, H, NO)
@@ -53,8 +54,8 @@ C2(SFT_BSPC, H, 4)
 C2(SFT_BSPC, COMM, 5)
 C2(SFT_BSPC, DOT, 6)
 C2(SFT_BSPC, N, 1)
-C2(SFT_BSPC, E, 2) 
-C2(SFT_BSPC, I, 3) 
+C2(SFT_BSPC, E, 2)
+C2(SFT_BSPC, I, 3)
 C2(SFT_BSPC, O, 0)
 C2(SFT_BSPC, L, 7)
 C2(SFT_BSPC, U, 8)
@@ -76,8 +77,6 @@ C2(SFT_SPC, X, _PIPE)
 
 // vim save
 C3A(Q, W, F, PS("\e:wq\n"))
-// undo
-C2A(A, R, PMS(SS_LGUI("z"), SS_LCTL("z")))
 // copy, paste, cut
 C2A(W, F, PMS(SS_LGUI("c"), SS_LCTL("c")))
 C2A(F, P, PMS(SS_LGUI("v"), SS_LCTL("v")))
@@ -87,7 +86,7 @@ C2A(W, P, PMS(SS_LGUI("x"), SS_LCTL("x")))
 C2A(R, F, PMS(SS_LGUI("f"), SS_LCTL("f")))
 C2A(F, T, PMS(SS_LSFT(SS_LGUI("f")), SS_LSFT(SS_LCTL("f"))))
 
-// Run IDEA 
+// Run IDEA
 C3A(S, T, G,  PS(SS_DOWN(X_LSFT)SS_TAP(X_F10)SS_UP(X_LSFT)))
 
 // Navigation
@@ -112,7 +111,7 @@ C2A(N, K, PS(SS_TAP(X_END)SS_TAP(X_ENT)))
 C3A(L, U, Y, PS(SS_TAP(X_END)SS_DOWN(X_LSFT)SS_TAP(X_UP)SS_TAP(X_END)SS_UP(X_LSFT)))
 
 // Duplicate current line
-C3A(W, F, P, PMS(SS_TAP(X_END)SS_DOWN(X_LSFT)SS_TAP(X_UP)SS_TAP(X_END)SS_UP(X_LSFT)SS_LGUI("c")SS_LGUI("v")SS_LGUI("v"), SS_TAP(X_END)SS_DOWN(X_LSFT)SS_TAP(X_UP)SS_TAP(X_END)SS_UP(X_LSFT)SS_LCTL("c")SS_LCTL("v")SS_LCTL("v")))
+C3A(W, F, P, PMS(SS_TAP(X_END)SS_DOWN(X_LSFT)SS_TAP(X_UP)SS_TAP(X_END)SS_UP(X_LSFT)SS_LGUI("c")SS_DELAY(10)SS_LGUI("v")SS_DELAY(10)SS_LGUI("v"), SS_TAP(X_END)SS_DOWN(X_LSFT)SS_TAP(X_UP)SS_TAP(X_END)SS_UP(X_LSFT)SS_LCTL("c")SS_DELAY(10)SS_LCTL("v")SS_DELAY(10)SS_LCTL("v")))
 // Delete current line
 C3A(H, COMM, DOT, PS(SS_TAP(X_END)SS_DOWN(X_LSFT)SS_TAP(X_HOME)SS_UP(X_LSFT)SS_TAP(X_DEL)))
 
